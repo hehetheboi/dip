@@ -1,0 +1,12 @@
+clc;
+N = 4;
+C = zeros(N, N);
+
+for k = 1:N
+    if k == 1
+        C(k, :) = ones(1, N) / sqrt(N);
+    else
+        C(k, :) = sqrt(2/N) * cos(%pi * (2*(0:N-1) + 1)' * (k-1) / (2*N));
+    end
+    disp(C(k, :));
+end

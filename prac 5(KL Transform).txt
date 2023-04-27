@@ -1,0 +1,23 @@
+clear;
+clc;
+X = [4,3,5,6; 4,2,7,7; 5,5,6,7];
+[m, n] = size(X);
+A = sum(X, 2);
+E = X * X';
+
+mx = A / n;
+E = E / n;
+C = E - mx * mx';
+
+[T, D] = spec(C);
+[d, i] = gsort(diag(D));
+T = T(:, i);
+
+Y = T' * X;
+x = T * Y;
+
+disp("Eigen Values are U = ", d)
+disp("The eigen vector matrix T is =", T)
+disp("The KL transform basis is =", T')
+disp("KL transformation of the input matrix Y = ", Y)
+disp("Reconstruct matrix of the given sample matrix X = ", x)
